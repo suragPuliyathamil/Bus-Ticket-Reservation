@@ -1,0 +1,69 @@
+<%- include('partials/header'); -%>
+<link rel="stylesheet" type="text/css" href="/stylesheets/ticket.css">
+<script type="text/javascript">
+	$(function(){
+       $("#print").on("click",function(){
+           window.print();
+       });
+	});
+</script>
+<div class="container">
+	<h3>Booking Receipt</h3>
+	<hr>
+	<div class="row">
+		<div class="col-md-6">
+		<div class="para">
+		   <h5>Bus Number:<span><%=ticket.bus.busno%></span></h5>
+		</div>
+		<div class="para">
+		    <h5>From City:<span><%=ticket.from%></span></h5>	
+		</div>
+		<div class="para">
+		    <h5>Date of Travel:<span><%=ticket.date%></span></h5>
+		</div>	
+	</div>
+	<div class="col-md-6">
+		<div class="para">
+		    <h5>Bus Name:<span><%=ticket.bus.busname%></span></h5>
+		</div>
+		<div class="para">
+			<h5>To City:<span><%=ticket.to%></span></h5>    
+		</div>
+		<div class="para">
+		    <h5>Seat Type:<span><%=ticket.type%></span></h5>
+		</div>
+		
+	</div>
+	</div>
+	
+</div>
+<div class="container">
+ <table id="bus">
+   <thead>
+    <tr>
+ 		<th>Name</th>
+ 		<th>Gender</th>
+ 		<th>Age</th>
+ 		<th>Seat</th>
+ 	</tr>
+   </thead>
+   	<tbody>
+   	<%ticket.passengers.forEach(function(p){ %>   
+ 	<tr>
+ 		<td><%=p.name%></td>
+ 		<td><%=p.gender%></td>
+ 		<td><%=p.age%></td>
+ 		<td><%=p.seatno%></td>
+ 	</tr>
+ 	<% }) %>
+   </tbody> 
+ </table>
+ <h4 id="total">Total Fare:   <%=ticket.totalfare%></h4>
+
+ <button class="btn btn-success" id="print">Print Ticket</button>
+</form>
+ 
+</div>
+
+
+<%- include('partials/footer'); -%>

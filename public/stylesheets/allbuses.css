@@ -1,0 +1,61 @@
+.container{
+  margin-top: 40px;
+  width: 100%
+}
+h3{
+  letter-spacing: 0.05em;
+  word-spacing: 0.05em;
+}
+hr{
+  background-color:#ccc;
+}
+table{
+  margin-top: 30px;
+}
+#bus {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#bus td, #bus th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#bus tr:nth-child(even){background-color: #1b1b1b;}
+
+#bus tr:hover {background-color: #000;}
+
+#bus th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+h4{
+  margin-top: 40px;
+  text-align: center;
+}
+.form-group{
+  display:flex;
+  padding-right: 30px;
+  display: inline-block;
+}
+.form-group button{
+  display: block;
+}
+.form-control{
+    width: 200px;
+}
+label{
+  padding-right: 10px;
+}
+.form-control option{
+  width: 150px;
+}
+br{
+  margin-bottom: 20px;
+}

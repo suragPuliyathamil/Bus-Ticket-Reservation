@@ -1,0 +1,44 @@
+<%- include('partials/header'); -%> 
+<link rel="stylesheet" type="text/css" href="/stylesheets/allbuses.css">
+<div class="container">
+ <h3>Bus Details</h3>
+ <table id="bus">
+   <col>
+   <colgroup span="3"></colgroup>
+   <thead>
+    <tr>
+ 		<th rowspan="2">Bus No</th>
+ 		<th rowspan="2">Name</th>
+ 		<th rowspan="2">Type</th>
+    <th rowspan="2">Distance</th>
+ 		<th rowspan="2">From Station</th>
+ 		<th rowspan="2">To Station</th>
+ 		<th colspan="3" scope="colgroup">Fare</th>
+    <th rowspan="2">Action</th>
+ 	</tr>
+ 	<tr>
+ 		<th scope="col">Seater</th>
+ 		<th scope="col">Semi</th>
+ 		<th scope="col">Sleeper</th>
+ 	</tr>
+   </thead>	
+   <tbody>
+ 	<tr>
+ 		<td><%=bus.busno%></td>
+ 		<td><%=bus.busname%></td>
+ 		<td><%=bus.type%></td>
+    <td><%=bus.distance%> km</td>
+ 		<td><%=bus.from%></td>
+ 		<td><%=bus.to%></td>
+ 		<td><%=bus.fareseater%></td>
+ 		<td><%=bus.faresemi%></td>
+ 		<td><%=bus.faresleeper%></td>
+    <td><a href="/buses/<%=bus._id%>/edit">Edit Details</a></td>
+ 	</tr>
+   </tbody>	
+ </table>
+<form action="/buses/<%=bus._id%>?_method=DELETE" method="POST">
+  <button style="margin-top: 20px;" class="btn btn-danger">Delete Bus</button>
+</form>
+</div>
+<%- include('partials/footer'); -%>

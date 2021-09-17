@@ -1,0 +1,49 @@
+<%- include('partials/header'); -%>
+ <link rel="stylesheet" type="text/css" href="/stylesheets/allbuses.css">
+ <div class="container">
+ <h3>All Bookings History</h3>
+ <hr>
+  	<%var value = 0%>
+    <%ticket.forEach(function(ticket){ %>
+      <%if(ticket.ticketowner.username===currentUser.username){%>
+       <%value=1;%>
+     <% } %>
+    <% }) %>
+ <%if(value===1){%>
+ <table id="bus">
+   <thead>
+    <tr>
+ 		<th>Bus No</th>
+ 		<th>Name</th>
+ 		<th>Type</th>
+ 		<th>From Station</th>
+ 		<th>To Station</th>
+ 		<th>Journey Date</th>
+ 		<th>Total Fare</th>
+ 		<th>Action</th>
+ 	</tr>
+   </thead>
+   <tbody>
+   	<%ticket.forEach(function(ticket){ %>
+   	    <%if(ticket.ticketowner.username===currentUser.username){%>
+ 	<tr>
+
+ 		<td><%=ticket.bus.busno%></td>
+ 		<td><%=ticket.bus.busname%></td>
+ 		<td><%=ticket.type%></td>
+ 		<td><%=ticket.from%></td>
+ 		<td><%=ticket.to%></td>
+ 		<td><%=ticket.date%></td>
+ 		<td><%=ticket.totalfare%></td>
+ 		<td><a href="/printticket/<%=ticket._id%>">Print Ticket</a></td>
+ 	</tr>
+ 	 <% } %>
+    <% }) %>
+   </tbody>
+ </table>
+ <% } %>
+  <% if(value===0){%>
+    <h4>No Bookings History</h4>
+    <% } %>
+</div>
+<%- include('partials/footer'); -%>

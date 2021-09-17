@@ -1,0 +1,66 @@
+<%- include('partials/header'); -%>
+
+ <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+<div class="container">
+	<div class="row">
+		<div class="card text-center">
+			<div class="hub"><span>Orange</span> <span>bus</span></div>
+	        <form action="/buses/<%=bus._id%>?_method=PUT" method="POST">
+	        <div class="form-group">
+	        	<label for="busno" class="left">Bus No:</label>
+	            <input id="busno" class="form-control" type="text" value="<%=bus.busno%>" name="newBus[busno]" required>	
+	         </div> 
+	         <div class="form-group">
+	         	<label for="busname" class="left">Bus Name:</label>
+	            <input  id="busname" class="form-control" type="text" value="<%=bus.busname%>" name="newBus[busname]" required>	
+	         </div> 
+	         <div class="form-group">
+	            <div id="Type"><span>Type:</span>
+     	        <input id="Ac" type="radio" name="newBus[type]" value="Ac" required>
+     	        <label for="Ac">Ac</label>   
+     	        <input id="Non-Ac" type="radio" name="newBus[type]" value="Non-Ac"> 
+     	        <label for="Non-Ac">Non-Ac</label>
+     	     </div>
+	         </div>
+	         <div class="form-group">
+	         	<label for="from" class="left">From:</label>
+	            <input id="from" class="form-control" type="text" value="<%=bus.from%>" name="newBus[from]" required>	
+	         </div> 
+	         <div class="form-group">
+	         	<label for="to" class="left">To:</label>
+	            <input id="to" class="form-control" type="text" value="<%=bus.to%>" name="newBus[to]" required>	
+	         </div> 
+	         <div class="form-group">
+	         	<label for="distance" class="left">Distance:</label>
+	            <input id="distance" class="form-control" type="number" value="<%=bus.distance%>" name="newBus[distance]" required>	
+	         </div>
+	         <div class="form-group">
+	         	<label for="departure" class="left">Departure:</label>
+	            <input id="departure" class="form-control" type="text" value="<%=bus.departure%>" name="newBus[departure]" required>	
+	         </div> 
+	         <div class="form-group">
+	         	<label for="arrival" class="left">Arrival:</label>
+	            <input id="arrival" class="form-control" type="text" value="<%=bus.arrival%>" name="newBus[arrival]" required>	
+	         </div> 
+	         <div class="form-group">
+	         	<label for="seater" class="left">Fare for Seater:</label>
+	            <input id="seater" class="form-control" type="number" value="<%=bus.fareseater%>" name="newBus[fareseater]">	
+	         </div>
+	         <div class="form-group">
+	         	<label for="semi" class="left">Fare for Semi-Sleeper:</label>
+	            <input  id="semi" class="form-control" type="number" value="<%=bus.faresemi%>" name="newBus[faresemi]">	
+	         </div>
+	         <div class="form-group">
+	         	<label for="sleeper" class="left">Fare for Sleeper</label>
+	            <input id="sleeper" class="form-control" type="number" value="<%=bus.faresleeper%>" name="newBus[faresleeper]">	
+	         </div>
+	        	
+	        <div class="form-group">
+	            <button class="btn btn-lg btn-block">Submit</button>	
+	        </div>	    
+            </form>
+		</div>  
+	</div>  	
+</div>
+
+<%- include('partials/footer'); -%>

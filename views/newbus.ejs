@@ -1,0 +1,56 @@
+<%- include('partials/header'); -%>
+
+ <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+<div class="container">
+	<div class="row">
+		<div class="card text-center">
+			<div class="hub"><span>Orange</span> <span>bus</span></div>
+	        <form action="/buses" method="POST">
+	        <div class="form-group">
+	            <input class="form-control" type="text" placeholder="BusNo" name="newBus[busno]" required>	
+	         </div> 
+	         <div class="form-group">
+	            <input class="form-control" type="text" placeholder="Bus Name" name="newBus[busname]" required>	
+	         </div> 
+	         <div class="form-group">
+	            <div id="Type"><span>Type:</span>
+     	        <input id="Ac" type="radio" name="newBus[type]" value="Ac" required>
+     	        <label for="Ac">Ac</label>   
+     	        <input id="Non-Ac" type="radio" name="newBus[type]" value="Non-Ac"> 
+     	        <label for="Non-Ac">Non-Ac</label>
+     	     </div>
+	         </div>
+	         <div class="form-group">
+	            <input class="form-control" type="text" placeholder="From" name="newBus[from]" required>	
+	         </div> 
+	         <div class="form-group">
+	            <input class="form-control" type="text" placeholder="To" name="newBus[to]" required>	
+	         </div> 
+	         <div class="form-group">
+	            <input class="form-control" type="number" placeholder="Distance" name="newBus[distance]" required>	
+	         </div>
+	         <div class="form-group">
+	            <input class="form-control" type="text" placeholder="Departure(Format-hh:mm)" name="newBus[departure]" required>	
+	         </div> 
+	         <div class="form-group">
+	            <input class="form-control" type="text" placeholder="Arrival(Format-hh:mm)" name="newBus[arrival]" required>	
+	         </div> 
+	         <div class="form-group">
+	            <input class="form-control" type="number" placeholder="Fare for Seater" name="newBus[fareseater]">	
+	         </div>
+	         <div class="form-group">
+	            <input class="form-control" type="number" placeholder="Fare for Semi-Sleeper" name="newBus[faresemi]">	
+	         </div>
+	         <div class="form-group">
+	            <input class="form-control" type="number" placeholder="Fare for Sleeper" name="newBus[faresleeper]">	
+	         </div>
+	        	
+	        <div class="form-group">
+	            <button class="btn btn-lg btn-block">Submit</button>	
+	        </div>	    
+            </form>
+		</div>  
+	</div>  	
+</div>
+
+<%- include('partials/footer'); -%>

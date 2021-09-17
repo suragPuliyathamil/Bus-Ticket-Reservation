@@ -1,0 +1,120 @@
+<%- include('partials/header'); -%>
+<link rel="stylesheet" type="text/css" href="/stylesheets/ticket.css">
+<script type="text/javascript">
+	var val = <%=value%>;
+	$(function(){
+       $("#addPassenger").on("click",function(){
+       	  val++;
+          $("#bus").find('tbody')
+           .append($('<tr>')
+             .append($('<td>')
+               .append($('<input>')
+                .attr({type:'text',name:'p['+val+'][name]'})  
+               )
+               .append($('</td>'))   
+             )
+             .append($('<td>')
+               .append($('<input>')
+                .attr({type:'text',name:'p['+val+'][gender]'})  
+               )
+               .append($('</td>'))
+              )
+             .append($('<td>')
+               .append($('<input>')
+                .attr({type:'number',name:'p['+val+'][age]'})  
+               )
+               .append($('</td>'))
+              )
+             .append($('<td>')
+               .append($('<button>Remove</button>')
+                .addClass('remove')   
+               )
+               .append($('</td>'))
+              )
+           );
+       });
+	});
+	$(function(){
+		$('#bus').on('click','.remove', function(){
+          $(this).closest ('tr').remove ();
+       });
+	});
+</script>
+<!-- <p><%=bus.busno%></p>
+<p><%=bus.busname%></p>
+<p><%=bus.from%></p>
+<p><%=bus.to%></p>
+<p><%=bus.distance%></p>
+<p><%=type%></p>
+<p><%=date%></p>
+ -->
+
+<div class="container">
+	<h3>Enter Passenger Details</h3>
+	<hr>
+	<div class="row">
+		<div class="col-md-6">
+		<div class="para">
+		   <h5>Bus Number*</h5>
+		   <input type="text" name="" value="<%=bus.busno%>" disabled>	
+		</div>
+		<div class="para">
+		    <h5>From City*</h5>
+		    <input type="text" name="" value="<%=bus.from%>" disabled>	
+		</div>
+		<div class="para">
+		    <h5>Date of Travel*</h5>
+		    <input type="text" name="" value="<%=date%>" disabled>	
+		</div>	
+	</div>
+	<div class="col-md-6">
+		<div class="para">
+		    <h5>Bus Name*</h5>
+		    <input type="text" name="" value="<%=bus.busname%>" disabled>
+		</div>
+		<div class="para">
+			<h5>To City*</h5>
+		    <input type="text" name="" value="<%=bus.to%>" disabled>
+		</div>
+		<div class="para">
+		    <h5>Seat Type*</h5>
+		    <input type="text" name="" value="<%=type%>" disabled>	
+		</div>
+		
+	</div>
+	</div>
+	
+</div>
+<div class="container">
+<button id="addPassenger" class="btn btn-success btn-sm">Add More Passengers</button>
+<form action="/ticket/<%=bus._id%>/confirmticket" method="POST">
+ <input type="hidden" name="busid" value="<%=bus._id%>">
+ <input type="hidden" name="type" value="<%=type%>">
+ <input type="hidden" name="date" value="<%=date%>">
+ <input type="hidden" name="value" value="<%=value%>">
+ <table id="bus">
+   <thead>
+    <tr>
+ 		<th>Name</th>
+ 		<th>Gender</th>
+ 		<th>Age</th>
+ 		<th>Action</th>
+ 	</tr>
+   </thead>
+   	<tbody>
+ 	<tr>
+ 		<td><input type="text" name="p[0][name]"></td>
+ 		<td><input type="text" name="p[0][gender]"></td>
+ 		<td><input type="number" name="p[0][age]"></td>
+ 		<td></td>
+ 	</tr>
+   </tbody>
+   
+ </table>
+ <button class="btn btn-primary" type="submit">Book Ticket</button>
+</form>
+ 
+</div>
+
+
+<%- include('partials/footer'); -%>

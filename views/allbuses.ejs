@@ -1,0 +1,48 @@
+<%- include('partials/header'); -%>
+ <link rel="stylesheet" type="text/css" href="/stylesheets/allbuses.css">
+ <div class="container">
+ <h3>All Available Buses</h3>
+ <hr>
+ <%var value = 0%>
+    <%bus.forEach(function(bus){ %>
+       <%value=1;%>
+    <% }) %>
+ <%if(value===1){%>
+ <table id="bus">
+   <thead>
+    <tr>
+ 		<th>Bus No</th>
+ 		<th>Name</th>
+ 		<th>Type</th>
+ 		<th>From Station</th>
+ 		<th>To Station</th>
+ 		<th>Departure Time</th>
+ 		<th>Arrival Time</th>
+ 		<% if(currentUser && currentUser.admin === true){ %>
+        <th>Action</th>
+ 	    <% } %>
+ 	</tr>
+   </thead>
+   <tbody>
+   	<%bus.forEach(function(bus){ %>
+ 	<tr>
+ 		<td><%=bus.busno%></td>
+ 		<td><%=bus.busname%></td>
+ 		<td><%=bus.type%></td>
+ 		<td><%=bus.from%></td>
+ 		<td><%=bus.to%></td>
+ 		<td><%=bus.departure%></td>
+ 		<td><%=bus.arrival%></td>
+ 		<% if(currentUser && currentUser.admin === true){ %>
+        <td><a href="/buses/<%=bus._id%>">View Details</a></td>
+ 	    <% } %>
+ 	</tr>
+    <% }) %>
+   </tbody>
+ </table>
+ <% } %>
+  <% if(value===0){%>
+    <h4>No buses available</h4>
+    <% } %>
+</div>
+<%- include('partials/footer'); -%>

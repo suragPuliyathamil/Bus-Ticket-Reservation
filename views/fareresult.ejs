@@ -1,0 +1,100 @@
+<%- include('partials/header'); -%>
+ <link rel="stylesheet" type="text/css" href="/stylesheets/allbuses.css">
+  <script type="text/javascript">
+  $(function(){
+      $(".select option").val(function(idx, val) {
+            $(this).siblings("[value='"+ this.value +"']").remove();
+            return val;
+        });
+  });
+  $(function(){
+    $(".selectto option").val(function(idx, val) {
+            $(this).siblings("[value='"+ this.value +"']").remove();
+            return val;
+        });
+  });
+    $(function() {
+      var select = $('.select');
+      select.html(select.find('option').sort(function(x, y) {
+      return $(x).text() > $(y).text() ? 1 : -1;
+     }));
+
+     var select1 = $('.selectto');
+     select1.html(select1.find('option').sort(function(x, y) {
+          return $(x).text() > $(y).text() ? 1 : -1;
+     }));
+   });   
+</script>
+ <div class="container">
+ <h3>Bus Fare Search</h3>
+ <hr>
+    <form action="/fare" method="POST" class="form-inline">
+    	<div class="form-group">
+ 		<label for="from">From Stoppage: </label>       
+ 		<select class="form-control select" id="from" name="from">
+ 			<%bus.forEach(function(bus){ %>
+ 		        <option  value="<%=bus.from%>"><%=bus.from%></option>
+            <% }) %>	
+ 		</select>
+ 	    </div>
+ 	    <div class="form-group">
+ 		<label for="to">To Stoppage: </label>
+ 		<select class="form-control selectto" name="to" id="to">
+ 			<%bus.forEach(function(bus){ %>
+ 		        <option value="<%=bus.to%>"><%=bus.to%></option>
+            <% }) %>	
+ 		</select>
+ 	    </div>
+ 	    <div class="form-group">
+ 	    	<button class="btn btn-success" id="submit">Search!</button>
+     	</div>
+    </form>
+ 	<%var value = 0%>
+    <%bus.forEach(function(bus){ %>
+    <%if(bus.from===from && bus.to===to){ %>
+       <%value=1;%>
+     <% } %>
+    <% }) %>
+ <%if(value===1){%>
+ <table id="bus">
+   <col>
+   <colgroup span="3"></colgroup>
+   <thead>
+    <tr>
+ 		<th rowspan="2">Bus No</th>
+ 		<th rowspan="2">Name</th>
+ 		<th rowspan="2">Type</th>
+ 		<th rowspan="2">From Station</th>
+ 		<th rowspan="2">To Station</th>
+ 		<th colspan="3" scope="colgroup">Fare</th>
+ 	</tr>
+ 	<tr>
+ 		<th scope="col">Seater</th>
+ 		<th scope="col">Semi</th>
+ 		<th scope="col">Sleeper</th>
+ 	</tr>
+   </thead>	
+   <tbody>
+   	<%bus.forEach(function(bus){ %>
+    <%if(bus.from===from && bus.to===to){ %>
+ 	<tr>
+ 		<td><%=bus.busno%></td>
+ 		<td><%=bus.busname%></td>
+ 		<td><%=bus.type%></td>
+ 		<td><%=bus.from%></td>
+ 		<td><%=bus.to%></td>
+ 		<td><%=bus.fareseater%></td>
+ 		<td><%=bus.faresemi%></td>
+ 		<td><%=bus.faresleeper%></td>
+ 	</tr>
+   <% } %>
+    <% }) %>
+
+   </tbody>	
+ </table>
+<% } %>
+  <% if(value===0){%>
+    <h4>No Available buses in the specified route</h4>
+    <% } %>
+</div>
+<%- include('partials/footer'); -%>
